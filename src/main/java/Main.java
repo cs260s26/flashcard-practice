@@ -22,7 +22,23 @@ public class Main {
                 break;
             }
         }
+        System.out.println("Would you like to remove a flashcard? (y/n)");
+        String removeChoice = scanner.nextLine();
+
+        if (removeChoice.equals("y")) {
+            System.out.println("Enter the term you want to remove:");
+            String removeTerm = scanner.nextLine();
+
+            if (flashcards.containsKey(removeTerm)) {
+                flashcards.remove(removeTerm);
+                System.out.println("Flashcard removed!");
+            } else {
+                System.out.println("Term not found.");
+            }
+        }
 
         System.out.println(flashcards);
     }
 }
+    
+
