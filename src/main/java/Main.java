@@ -1,43 +1,33 @@
-import java.util.HashMap;
 import java.util.Scanner;
 
-public class Main {
+public class Main {    
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        HashMap<String, String> flashcards = new HashMap<String, String>();
+        FlashcardDeck function = new FlashcardDeck();
+        
+        while (true) {
+            Scanner scanner = new Scanner(System.in);
 
-        while(true) {
-            System.out.println("Please enter term");
-            String inputTerm = scanner.nextLine();
+            System.out.println("Please enter number of what you would like to do.");
+            System.out.println("1. Add a flashcard\n2. Remove a flashcard\n3. Quiz on flashcards\n4. Exit");
 
-            System.out.println("Please enter the definition for " + inputTerm);
-            String inputDef = scanner.nextLine();
+            String userChoice = scanner.nextLine();
 
-            flashcards.put(inputTerm, inputDef);
-
-            System.out.println("Would you like to enter another flashcard?\nEnter 'y' to continue, or 'n' to quit");
-            String cont = scanner.nextLine();
-
-            if(cont.equals("n")) {
+            if(userChoice.equals("1")) {
+                function.addFlashcard();
+            }
+            else if(userChoice.equals("2")){
+                function.removeFlashcard();
+            }
+            else if(userChoice.equals("3")){
+                function.quizOnFlashcards();
+            }
+            else if(userChoice.equals("4")){
                 break;
             }
-        }
-        System.out.println("Would you like to remove a flashcard? (y/n)");
-        String removeChoice = scanner.nextLine();
-
-        if (removeChoice.equals("y")) {
-            System.out.println("Enter the term you want to remove:");
-            String removeTerm = scanner.nextLine();
-
-            if (flashcards.containsKey(removeTerm)) {
-                flashcards.remove(removeTerm);
-                System.out.println("Flashcard removed!");
-            } else {
-                System.out.println("Term not found.");
+            else {
+                System.out.println("Unrecognized entry, please try again.");
             }
         }
-
-        System.out.println(flashcards);
     }
 }
     
